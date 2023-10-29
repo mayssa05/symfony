@@ -1,0 +1,67 @@
+<style>
+    /* Styles pour la table */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #a09393;
+    }
+
+    /* Styles pour l'en-tête de la table */
+    th {
+        background-color: #1f0f86;
+        color: white;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    /* Styles pour les cellules du tableau */
+    td {
+        padding: 10px;
+        border: 1px solid #131313; /* Couleur du trait plus claire */
+    }
+
+    /* Styles pour les cellules des lignes impaires */
+    tr:nth-child(odd) {
+        background-color: #e1e1e1;
+    }
+
+    /* Style pour le trait entre "Edit" et "Delete" */
+    .action-separator {
+        border-right: 1px solid #eee; /* Couleur du trait plus claire */
+        margin-right: 5px;
+        margin-left: 5px;
+        height: 15px;
+    }
+
+    /* Styles pour les liens au survol de la souris */
+    td a:hover {
+        text-decoration: underline;
+    }
+</style>
+<table border="3">
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Add</th>
+        <th>show</th>
+    </tr>
+    {% for a in Author %}
+    <tr>
+        <td>{{a.id}}</td>
+        <td>{{a.username}}</td>
+        <td>{{a.email}}</td>
+        <td>
+            <a href="{{path('editauthor',{'id':a.id})}}" class="edit-link">Edit</a>
+        </td>
+        <td>
+            <a href="{{path('deleteauthor',{'id':a.id})}}" class="delete-link">Delete</a>
+        </td>
+        <td>
+            <a href="{{path('addformauthor',{'id':a.id})}}" class="delete-link">add</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
